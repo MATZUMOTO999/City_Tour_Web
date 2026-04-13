@@ -1,15 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HuantaStatus | Estado de Zonas Turísticas</title>
-    <meta name="description" content="Consulta el estado en tiempo real de las cataratas, santuarios y miradores de Huanta, Ayacucho. Vive 'La Esmeralda de los Andes'." />
+    <title>HuantaTour | Zonas Turísticas</title>
+    <meta
+      name="description"
+      content="Consulta el estado en tiempo real de las cataratas, santuarios y miradores de Huanta, Ayacucho. Vive 'La Esmeralda de los Andes'."
+    />
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -17,44 +23,83 @@
     <div id="app" class="w-full flex flex-col">
       <!-- El contenido se cargará dinámicamente -->
     </div>
-    
+
     <!-- Modal para ver imágenes en tamaño grande -->
-    <div id="image-modal" class="fixed inset-0 z-[100] hidden bg-slate-950/98 backdrop-blur-3xl flex flex-col items-center p-4 md:p-8 cursor-zoom-out overflow-y-auto overflow-x-hidden">
-        <!-- Close Button -->
-        <button id="close-modal" class="fixed top-4 right-4 md:top-6 md:right-6 text-white/40 hover:text-white transition-all p-2 bg-white/5 rounded-full z-[120]">
-            <i data-lucide="x" class="w-6 h-6 md:w-8 md:h-8"></i>
-        </button>
+    <div
+      id="image-modal"
+      class="fixed inset-0 z-[100] hidden bg-slate-950/98 backdrop-blur-3xl flex flex-col items-center p-4 md:p-8 cursor-zoom-out overflow-y-auto overflow-x-hidden"
+    >
+      <!-- Close Button -->
+      <button
+        id="close-modal"
+        class="fixed top-4 right-4 md:top-6 md:right-6 text-white/40 hover:text-white transition-all p-2 bg-white/5 rounded-full z-[120]"
+      >
+        <i data-lucide="x" class="w-6 h-6 md:w-8 md:h-8"></i>
+      </button>
 
-        <!-- Navigation Arrows (Hidden on small screens) -->
-        <button id="prev-btn" class="fixed left-2 md:left-6 top-1/2 -translate-y-1/2 p-2 text-white/20 hover:text-emerald-400 transition-all z-[110] outline-none hidden md:block">
-            <i data-lucide="chevron-left" class="w-10 h-10 md:w-16 md:h-16"></i>
-        </button>
-        
-        <button id="next-btn" class="fixed right-2 md:right-6 top-1/2 -translate-y-1/2 p-2 text-white/20 hover:text-emerald-400 transition-all z-[110] outline-none hidden md:block">
-            <i data-lucide="chevron-right" class="w-10 h-10 md:w-16 md:h-16"></i>
-        </button>
+      <!-- Navigation Arrows (Hidden on small screens) -->
+      <button
+        id="prev-btn"
+        class="fixed left-2 md:left-6 top-1/2 -translate-y-1/2 p-2 text-white/20 hover:text-emerald-400 transition-all z-[110] outline-none hidden md:block"
+      >
+        <i data-lucide="chevron-left" class="w-10 h-10 md:w-16 md:h-16"></i>
+      </button>
 
-        <!-- Main Modal Content -->
-        <div class="relative w-full max-w-5xl flex flex-col items-center animate-modalIn pointer-events-auto my-auto py-6">
-            <!-- Image Container: Recuperamos tamaño -->
-            <div class="relative w-full flex justify-center bg-transparent mb-4 md:mb-6">
-                <img id="modal-img" src="" alt="" class="max-w-[95%] max-h-[60vh] md:max-h-[70vh] object-contain rounded-2xl shadow-2xl border border-white/10" />
-            </div>
-            
-            <!-- Caption Container: Más compacto -->
-            <div id="modal-caption" class="w-full max-w-2xl bg-slate-900/60 backdrop-blur-2xl p-6 md:p-8 rounded-[2rem] border border-white/10 text-center shadow-2xl relative mx-4">
-                <span id="modal-category" class="text-[9px] md:text-[10px] text-emerald-500 font-black uppercase tracking-[0.3em] mb-2 block"></span>
-                
-                <div class="flex items-center justify-center gap-3 mb-3">
-                    <h3 id="modal-title" class="text-xl md:text-3xl font-black text-white tracking-tighter"></h3>
-                    <a id="map-link" href="#" target="_blank" class="p-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl text-emerald-400 transition-all shadow-lg" title="Ver en Google Maps">
-                        <i data-lucide="navigation" class="w-5 h-5 md:w-6 h-6"></i>
-                    </a>
-                </div>
-                
-                <p id="modal-desc" class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-xl mx-auto opacity-90"></p>
-            </div>
+      <button
+        id="next-btn"
+        class="fixed right-2 md:right-6 top-1/2 -translate-y-1/2 p-2 text-white/20 hover:text-emerald-400 transition-all z-[110] outline-none hidden md:block"
+      >
+        <i data-lucide="chevron-right" class="w-10 h-10 md:w-16 md:h-16"></i>
+      </button>
+
+      <!-- Main Modal Content -->
+      <div
+        class="relative w-full max-w-5xl flex flex-col items-center animate-modalIn pointer-events-auto my-auto py-6"
+      >
+        <!-- Image Container: Recuperamos tamaño -->
+        <div
+          class="relative w-full flex justify-center bg-transparent mb-4 md:mb-6"
+        >
+          <img
+            id="modal-img"
+            src=""
+            alt=""
+            class="max-w-[95%] max-h-[60vh] md:max-h-[70vh] object-contain rounded-2xl shadow-2xl border border-white/10"
+          />
         </div>
+
+        <!-- Caption Container: Más compacto -->
+        <div
+          id="modal-caption"
+          class="w-full max-w-2xl bg-slate-900/60 backdrop-blur-2xl p-6 md:p-8 rounded-[2rem] border border-white/10 text-center shadow-2xl relative mx-4"
+        >
+          <span
+            id="modal-category"
+            class="text-[9px] md:text-[10px] text-emerald-500 font-black uppercase tracking-[0.3em] mb-2 block"
+          ></span>
+
+          <div class="flex items-center justify-center gap-3 mb-3">
+            <h3
+              id="modal-title"
+              class="text-xl md:text-3xl font-black text-white tracking-tighter"
+            ></h3>
+            <a
+              id="map-link"
+              href="#"
+              target="_blank"
+              class="p-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl text-emerald-400 transition-all shadow-lg"
+              title="Ver en Google Maps"
+            >
+              <i data-lucide="navigation" class="w-5 h-5 md:w-6 h-6"></i>
+            </a>
+          </div>
+
+          <p
+            id="modal-desc"
+            class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-xl mx-auto opacity-90"
+          ></p>
+        </div>
+      </div>
     </div>
 
     <script type="module" src="/src/main.js"></script>
