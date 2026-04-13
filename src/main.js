@@ -5,7 +5,7 @@ const zones = [
   {
     id: 1,
     name: "Parque de las Leyendas",
-    image: "https://images.unsplash.com/photo-1541414779316-956a5084c0d4?auto=format&fit=crop&q=80&w=800",
+    image: "/imagenes/1b7e1eda6ae7cc0165b691e0795d99ec.png",
     status: "open", // open, closed, busy
     occupancy: 45,
     lastUpdate: "Hace 5 min",
@@ -15,7 +15,7 @@ const zones = [
   {
     id: 2,
     name: "Museo de Arte Moderno",
-    image: "https://images.unsplash.com/photo-1518998053574-53fd615bb94a?auto=format&fit=crop&q=80&w=800",
+    image: "/imagenes/24f8da1d69b24aa9a45cd860c9703ccd.png",
     status: "busy",
     occupancy: 92,
     lastUpdate: "Hace 2 min",
@@ -25,7 +25,7 @@ const zones = [
   {
     id: 3,
     name: "Plaza de Armas",
-    image: "https://images.unsplash.com/photo-1590424753062-32517f354afa?auto=format&fit=crop&q=80&w=800",
+    image: "/imagenes/2568e2c521e88ffc61014cf3baed5c60.png",
     status: "open",
     occupancy: 20,
     lastUpdate: "Hace 10 min",
@@ -35,7 +35,7 @@ const zones = [
   {
     id: 4,
     name: "Miraflores Boardwalk",
-    image: "https://images.unsplash.com/photo-1619551460341-2a421b9338f7?auto=format&fit=crop&q=80&w=800",
+    image: "/imagenes/37bf09286041885e4a11d236070eb3fe.png",
     status: "open",
     occupancy: 60,
     lastUpdate: "Hace 15 min",
