@@ -265,6 +265,19 @@ function setupModalEvents() {
   const prevBtn = document.querySelector('#prev-btn')
   const nextBtn = document.querySelector('#next-btn')
 
+  // Swipe Support
+  let touchStartX = 0
+  let touchEndX = 0
+
+  const handleSwipe = () => {
+    const swipeThreshold = 50
+    const diff = touchStartX - touchEndX
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) nextImg() // Swipe Left -> Next
+      else prevImg() // Swipe Right -> Prev
+    }
+  }
+
   const closeModal = () => {
     modal.classList.add('hidden')
     modal.classList.remove('flex')
@@ -286,6 +299,16 @@ function setupModalEvents() {
   closeBtn?.addEventListener('click', (e) => { e.stopPropagation(); closeModal(); })
   prevBtn?.addEventListener('click', prevImg)
   nextBtn?.addEventListener('click', nextImg)
+
+  // Touch Events for Swipe
+  modal?.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX
+  }, { passive: true })
+
+  modal?.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX
+    handleSwipe()
+  }, { passive: true })
 
   modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); })
 

@@ -13,16 +13,16 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
   background-color: #020617;
+  color: #f8fafc;
+  scroll-behavior: smooth;
+  line-height: 1.6;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  scroll-behavior: smooth;
 }
 
 body {
@@ -44,9 +44,28 @@ body {
 }
 
 /* Animations */
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-modalIn {
+  animation: modalIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Custom Grids */
+.grid {
+  display: grid;
+  gap: 2rem;
 }
 
 main > div > div {
